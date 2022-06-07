@@ -83,9 +83,10 @@ export const CalculatorProvider = ({ children }) => {
 							newValue = `-${newValue}`;
 						}
 					} else {
-						newValue = `${calculatorData.currentOperand || ""}${newInput}`;
+						newValue = calculatorData.clear
+							? newInput
+							: `${calculatorData.currentOperand || ""}${newInput}`;
 					}
-
 					if (newValue.length > 13) {
 						return;
 					}
@@ -94,6 +95,7 @@ export const CalculatorProvider = ({ children }) => {
 					setCalculatorData((prevData) => ({
 						...prevData,
 						currentOperand: newValue,
+						clear: false,
 					}));
 					return;
 				case ACTIONS.ADD_OPERATION:
@@ -137,6 +139,7 @@ export const CalculatorProvider = ({ children }) => {
 							),
 							operation: "",
 							previousOperand: "",
+							clear: true,
 						}));
 						return;
 					}

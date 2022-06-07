@@ -1,5 +1,4 @@
 /** @format */
-
 export const BUTTON_ENUM = Object.freeze({
 	CLEAR: "AC",
 	NEGATIVE: "-+",
